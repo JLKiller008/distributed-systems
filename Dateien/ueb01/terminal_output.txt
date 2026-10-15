@@ -1,0 +1,6 @@
+cd /workspaces/distributed-systems ; /usr/bin/env /home/vscode/.vscode-remote/extensions/redhat.java-1.57.0-linux-x64/jre/25.0.4.1-linux-x86_64/bin/java -XX:+ShowCodeDetailsInExceptionMessages -cp /home/vscode/.vscode-remote/data/User/workspaceStorage/52e8bb15/redhat.java/jdt_ws/distributed-systems_dd8095d8/bin Dateien.ueb01.Threading 
+2026-10-15 08:33:09.713, Thread-0, Thread 1 is running
+2026-10-15 08:33:09.714, Thread-1, Thread 2 is running
+2026-10-15 08:33:09.775, main, Unsynchronized counter: expected 200000, actual 199103
+2026-10-15 08:33:09.777, main, --------------------------------------------------
+2026-10-15 08:33:09.804, main, Synchronized counter: expected 200000, actual 200000
