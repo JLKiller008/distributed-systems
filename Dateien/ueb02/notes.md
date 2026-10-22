@@ -25,3 +25,19 @@ Connection: close
 </html>
 ```
 
+## Client
+
+Start the server first, then compile and run the client from the repository root:
+
+The client makes the same `GET /` request in two ways:
+
+1. `requestWithUrl(new URL(address))` demonstrates `java.net.URL` and
+   `HttpURLConnection`.
+2. `requestWithHttpClient(address)` accepts the address as a normal `String`
+   and uses the modern `java.net.http.HttpClient` API.
+
+An optional first argument can be used to request another HTTP URL:
+
+```bash
+java Dateien.ueb02.Client http://localhost:45123/
+```
