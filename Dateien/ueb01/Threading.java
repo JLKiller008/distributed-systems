@@ -5,13 +5,7 @@ public class Threading {
     private static final int INCREMENTS_PER_THREAD = 100_000;
 
     public static void main(String[] args) throws InterruptedException {
-        Thread thread1 = new Thread(() -> logger.log("Thread 1 is running"));
-        Thread thread2 = new Thread(() -> logger.log("Thread 2 is running"));
-        thread1.start();
-        thread2.start();
-        
-        thread1.join();
-        thread2.join();
+        logger.log("Starting threading test");
 
         Counter counter = new Counter();
 
