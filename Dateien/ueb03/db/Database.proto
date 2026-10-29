@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_outer_classname = "DatabaseOuterClass";
+
+message RPCRequest {
+  enum Operation {
+    OPERATION_UNSPECIFIED = 0;
+    GET_RECORD = 1;
+    ADD_RECORD = 2;
+    GET_SIZE = 3;
+  }
+
+  Operation operation = 1;
+  GetRecordRequest get_record = 2;
+  AddRecordRequest add_record = 3;
+}
+
+message GetRecordRequest {
+  int32 index = 1;
+}
+
+message AddRecordRequest {
+  int32 index = 1;
+  string record = 2;
+}
+
+message RPCResponse {
+  bool success = 1;
+  string error = 2;
+  optional string record = 3;
+  int32 size = 4;
+}

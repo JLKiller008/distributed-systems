@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+message LogMessage {
+  google.protobuf.Timestamp timestamp = 1;
+  string source = 2;
+
+  enum Severity {
+    SEVERITY_UNSPECIFIED = 0;
+    DEBUG = 1;
+    INFO = 2;
+    WARN = 3;
+    ERROR = 4;
+    FATAL = 5;
+  }
+
+  Severity severity = 3;
+  string body = 4;
+}
