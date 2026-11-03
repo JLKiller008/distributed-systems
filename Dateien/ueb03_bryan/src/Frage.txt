@@ -1,0 +1,20 @@
+„We have the choice to send messages directly via the socket or encapsulate them in HTTP … What is the difference of these two approaches?“
+
+HTTP:
+- Viele Extra Felder z.B. für Statuscodes, wie die Nachrichten zu interpretieren sind
+- Gibt auch wenn gewünscht die Länge der Nachricht an wie Delimited (oder anderen Signifikator für Nachrichtenende)
+- Muss einem bestimmten Format folgen
+- Mehr zu übertragende Bytes durch "Anhängsel"
+
+Socket:
+- Informationen der Extra Felder müssen selber implementiert werden
+- "Freiform", es werden einfach rohe bytes gesendet
+- Längenangabe durch Delimited
+
+
+Also:
+- Socket freier kontrollierbar aber dafür weniger wohldefiniert
+- Internet auf HTTP ausgelegt und teils verlangt (nicht alle Proxies akzeptieren direkte Sockets)
+
+- Sockets wenn freie kontrolle nötig oder HTTPs extra daten zu viel sind.
+- HTTP wenn angenehm oder erfordert.

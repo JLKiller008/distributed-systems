@@ -1,0 +1,23 @@
+//.\protoc-36.2-win64\bin\protoc.exe -I . -I protoc-36.2-win64\include --java_out=src proto\LogMessages.proto
+
+syntax = "proto3";
+package LogProto;
+
+import "google/protobuf/timestamp.proto";
+option java_multiple_files = true;
+
+message LogMessage {
+    google.protobuf.Timestamp createdAt = 1;
+    optional string authorDetails = 2;
+    SeverityLevel severity = 3;
+    string body = 4;
+}
+
+enum SeverityLevel {
+    UNDEFINED = 0;
+    DEBUG = 1;
+    INFO = 2;
+    WARN = 3;
+    ERROR = 4;
+    FATAL = 5;
+}
