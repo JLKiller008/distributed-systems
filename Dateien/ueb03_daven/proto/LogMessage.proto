@@ -1,0 +1,26 @@
+// Java-Code erzeugen (aus ueb03): protoc -Iproto --java_out=src proto/LogMessage.proto
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+// Erzeugt Klassen im Java-Paket LogProto (z.B. LogProto.LogMessage)
+option java_package = "LogProto";
+option java_multiple_files = true;
+option java_outer_classname = "LogMessageProtos";
+
+// Ein Log-Eintrag, wie ihn Client und LogServer austauschen.
+message LogMessage {
+  enum Severity {
+    SEVERITY_UNSPECIFIED = 0;
+    DEBUG = 1;
+    INFO = 2;
+    WARN = 3;
+    ERROR = 4;
+    FATAL = 5;
+  }
+
+  google.protobuf.Timestamp timestamp = 1; // wann der Eintrag erzeugt wurde
+  optional string source = 2;              // optional: wer / wo (z.B. "LogClient@host")
+  Severity severity = 3;
+  string body = 4;                         // einzeiliger Text
+}

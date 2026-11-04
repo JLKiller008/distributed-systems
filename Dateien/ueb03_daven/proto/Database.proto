@@ -1,0 +1,35 @@
+// Java-Code erzeugen (aus ueb03): protoc -Iproto --java_out=src proto/Database.proto
+syntax = "proto3";
+
+// Erzeugt Klassen im Java-Paket DatabaseProto (z.B. DatabaseProto.DatabaseRequest)
+option java_package = "DatabaseProto";
+option java_multiple_files = true;
+option java_outer_classname = "DatabaseProtos";
+
+// Welche Operation der Server ausfuehren soll
+enum Operation {
+  UNDEFINED = 0;
+  GET = 1;   // getRecord
+  PUT = 2;   // addRecord
+  SIZE = 3;  // getSize
+}
+
+message PutParameters {
+  int32 key = 1;
+  string value = 2;
+}
+
+// RPC-Request: nur das zur Operation passende Argument ist gesetzt
+message DatabaseRequest {
+  Operation operation = 1;
+  optional int32 get_parameter = 2;        // Index fuer GET
+  optional PutParameters put_parameters = 3; // Index + Datensatz fuer PUT
+  // SIZE hat keine Argumente
+}
+
+message DatabaseReply {
+  Operation operation = 1;
+  string response_text = 2;
+  optional string get_response_value = 3;  // Ergebnis von GET
+  optional int32 size_response_value = 4;  // Ergebnis von SIZE
+}
