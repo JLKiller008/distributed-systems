@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ueb04.database";
+option java_outer_classname = "DatabaseProto";
+
+package database;
+
+service DatabaseService {
+  rpc GetRecord(GetRecordRequest) returns (GetRecordResponse);
+  rpc AddRecord(AddRecordRequest) returns (AddRecordResponse);
+  rpc GetSize(GetSizeRequest) returns (GetSizeResponse);
+}
+
+message GetRecordRequest {
+  int32 index = 1;
+}
+
+message GetRecordResponse {
+  string record = 1;
+  bool found = 2;
+}
+
+message AddRecordRequest {
+  int32 index = 1;
+  string record = 2;
+}
+
+message AddRecordResponse {}
+
+message GetSizeRequest {}
+
+message GetSizeResponse {
+  int32 size = 1;
+}
