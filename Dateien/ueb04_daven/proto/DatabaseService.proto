@@ -1,0 +1,21 @@
+// Python-Code erzeugen (aus ueb04):
+//   python -m grpc_tools.protoc -Iproto --python_out=. --grpc_python_out=. proto/DatabaseService.proto
+syntax = "proto3";
+
+package database;
+
+// Die Operationen sind jetzt echte RPCs. Das manuelle "Operation"-Feld aus ueb03 entfaellt.
+service Database {
+  rpc GetRecord (GetRecordRequest) returns (GetRecordReply);
+  rpc AddRecord (AddRecordRequest) returns (AddRecordReply);
+  rpc GetSize   (GetSizeRequest)   returns (GetSizeReply);
+}
+
+message GetRecordRequest { int32 index = 1; }
+message GetRecordReply   { string record = 1; }   // fehlender Index -> Status NOT_FOUND
+
+message AddRecordRequest { int32 index = 1; string record = 2; }
+message AddRecordReply   { }
+
+message GetSizeRequest   { }
+message GetSizeReply     { int32 size = 1; }
