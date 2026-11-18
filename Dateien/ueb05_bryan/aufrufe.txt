@@ -1,0 +1,71 @@
+getRecord:
+
+request:
+ {"jsonrpc": "2.0", "method": "getRecord", "params": [4101], "id": 1}
+
+ response:
+ normal:
+ {"jsonrpc": "2.0", "result": "Appen", "id": 1}
+ nicht gefunden:
+{"jsonrpc": "2.0", "result": null, "id": 1}
+
+
+addRecord:
+
+request:
+ {"jsonrpc": "2.0", "method": "addRecord", "params": [4101, "Appen"], "id": 1}
+
+ response:
+ normal:
+ {"jsonrpc": "2.0", "result": null, "id": 1}
+
+
+ 
+getSize:
+
+request:
+ {"jsonrpc": "2.0", "method": "getSize", "id": 1}
+
+ response:
+ normal:
+ {"jsonrpc": "2.0", "result": 6, "id": 1}
+
+
+
+error (falsche methode, kaputtes json etc):
+{"jsonrpc": "2.0", "error": {"code": (Fehlercode z.B. -32700), "message": "(Fehlerbeschreibung)"}, "id": 1}
+
+
+
+HTTP vs direct
+Grundargumente von Aufgabe 3 gelten:
+
+"HTTP:
+- Viele Extra Felder z.B. für Statuscodes, wie die Nachrichten zu interpretieren sind
+- Gibt auch wenn gewünscht die Länge der Nachricht an wie Delimited (oder anderen Signifikator für Nachrichtenende)
+- Muss einem bestimmten Format folgen
+- Mehr zu übertragende Bytes durch "Anhängsel"
+
+Socket:
+- Informationen der Extra Felder müssen selber implementiert werden
+- "Freiform", es werden einfach rohe bytes gesendet
+- Längenangabe durch Delimited
+
+
+Also:
+- Socket freier kontrollierbar aber dafür weniger wohldefiniert
+- Internet auf HTTP ausgelegt und teils verlangt (nicht alle Proxies akzeptieren direkte Sockets)
+
+- Sockets wenn freie kontrolle nötig oder HTTPs extra daten zu viel sind.
+- HTTP wenn angenehm oder erfordert."
+
+Zusätzlich:
+HTTP ist nur der Versand. HTTP Fehlercodes haben nichts mit den Operationen zu tun, sondern nur mit der HTTP operation.
+Wenn das bedacht ist kann das für Kommunikationsdebugging nützlich sein.
+
+Längenangabe muss bei Sockets nun irgendwie selbst definiert und kommuniziert werden.
+
+Nachrichten sind jetzt keine komprimierten Binärdateien mehr sondern Menschenlesbarer text.
+Dadurch sind die extra bytes durch HTTP weniger problematisch.
+
+Bei Json ist die Entscheidung offen bei XML ist HTTP pflicht.

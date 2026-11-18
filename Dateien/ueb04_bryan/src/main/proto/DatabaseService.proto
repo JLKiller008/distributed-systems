@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+
+service DatabaseService {
+    rpc GetRecord (KeyValue) returns (GetResponse);
+    rpc AddRecord (PutParameters) returns (google.protobuf.Empty);
+    rpc GetSize (google.protobuf.Empty) returns (SizeValue);
+}
+
+message KeyValue {int32 key = 1;}
+message PutParameters {int32 key = 1; string value = 2;}
+message SizeValue {int32 size = 1;}
+message GetResponse {bool found = 1; string value = 2;}
