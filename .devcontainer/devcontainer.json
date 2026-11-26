@@ -1,23 +1,19 @@
 {
-  "name": "Java Development",
-  "image": "mcr.microsoft.com/devcontainers/java:17", 
+  "name": "Java & Erlang Development",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
         "vscjava.vscode-java-pack",
         "redhat.java",
         "vscjava.vscode-maven",
-        "vscjava.vscode-gradle"
+        "vscjava.vscode-gradle",
+        "pgourlain.erlang"
       ]
     }
   },
-  "features": {
-    "ghcr.io/devcontainers/features/java:1": {
-      "version": "none",
-      "installMaven": "true",
-      "installGradle": "false"
-    }
-  },
-  "postCreateCommand": "java -version"
+  "postCreateCommand": "java -version && erl -version && rebar3 --version"
 }
 

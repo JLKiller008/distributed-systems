@@ -141,3 +141,6 @@ dist/
 
 # Allow protobuf-java-4.36.2.jar to be tracked
 !**/protobuf-java-4.36.2.jar
+
+# Erlang
+*.beam
